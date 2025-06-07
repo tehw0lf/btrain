@@ -1,0 +1,24 @@
+name: build and package docker image
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: external workflow
+    uses: tehw0lf/workflows/.github/workflows/build-test-publish.yml@main
+    permissions:
+      actions: write
+      contents: write
+      packages: write
+    with:
+      tool: 'npm'
+      install: 'ci'
+      build_branch: 'run build'
+      build_main: 'run build'
+      event_name: ${{ github.event_name }}
+      docker_meta: '[{"name":"btrain","file":"Dockerfile"}]'
+      artifact_path: 'dist'
