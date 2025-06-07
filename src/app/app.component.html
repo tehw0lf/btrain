@@ -1,0 +1,17 @@
+@if(address()) {
+<div class="address">
+  <h2>Address</h2>
+  <input [value]="maskedAddress()" (input)="updateAddress($event)" />
+  <h2>Claimable Gas:</h2>
+  <p>{{ claimableGas() }}</p>
+</div>
+} @else {
+<div class="no-address">
+  <input
+    class="initial" 
+    [value]="maskedAddress()"
+    (input)="updateAddress($event)"
+    placeholder="Enter an N3 address"
+  />
+</div>
+}

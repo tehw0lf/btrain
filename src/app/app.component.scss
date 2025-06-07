@@ -1,0 +1,32 @@
+.address, .no-address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  outline: none;
+  max-width: 110px;
+}
+
+.initial {
+  max-width: 165px;
+}
+
+h2, p {
+  margin: 0.5rem 0;
+  font-weight: 400;
+}
+
+body, :host {
+  background: #fafbfc;
+  color: #222;
+  font-family: 'Inter', Arial, sans-serif;
+}
