@@ -13,33 +13,29 @@ export class AppComponent {
 
   constructor() {
     effect(() => {
-      if (this.address()) {
-        this.neofuraService.invokeFunction(this.address());
+      if (this.address()?.length === 34 || this.address()?.endsWith('.neo')) {
+        this.neofuraService.getClaimableGas(this.address());
       }
     });
   }
 
   claimableGas = computed<string>(() => {
-    if (this.address() !== null) {
-      return (
+    return (
+      this.neofuraService
+        .responseSignal()
+        ?.result?.stack[0]?.value.padStart(9, '0')
+        .slice(0, 1) +
+        '.' +
         this.neofuraService
           .responseSignal()
           ?.result?.stack[0]?.value.padStart(9, '0')
-          .slice(0, 1) +
-          '.' +
-          this.neofuraService
-            .responseSignal()
-            ?.result?.stack[0]?.value.padStart(9, '0')
-            .slice(1) || 'error fetching claimable gas'
-      );
-    } else {
-      return 'error fetching claimable gas';
-    }
+          .slice(1) || 'error fetching claimable gas'
+    );
   });
 
   maskedAddress = computed<string>(() => {
     const addr = this.address();
-    if (addr && addr.length > 8) {
+    if (addr?.length === 34) {
       return addr.slice(0, 6) + '...' + addr.slice(-4);
     }
     return addr || '';

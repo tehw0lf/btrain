@@ -1,4 +1,4 @@
-@if(address()) {
+@if(address()?.length === 34 || address()?.endsWith('.neo')) {
 <div class="address">
   <h2>Address</h2>
   <input [value]="maskedAddress()" (input)="updateAddress($event)" />
