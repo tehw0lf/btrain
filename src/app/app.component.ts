@@ -24,16 +24,16 @@ export class AppComponent {
       return (
         this.neofuraService
           .responseSignal()
-          ?.result?.stack[0]?.value.padStart(8, '0')
+          ?.result?.stack[0]?.value.padStart(9, '0')
           .slice(0, 1) +
           '.' +
           this.neofuraService
             .responseSignal()
-            ?.result?.stack[0]?.value.padStart(8, '0')
-            .slice(1) || '0'
+            ?.result?.stack[0]?.value.padStart(9, '0')
+            .slice(1) || 'error fetching claimable gas'
       );
     } else {
-      return '0';
+      return 'error fetching claimable gas';
     }
   });
 
