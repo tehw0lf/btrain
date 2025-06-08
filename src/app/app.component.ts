@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 
 import { NeofuraService } from './neofura.service';
 
@@ -11,9 +11,16 @@ export class AppComponent {
   neofuraService = inject(NeofuraService);
   address = signal<string | null>(null);
 
+  constructor() {
+    effect(() => {
+      if (this.address()) {
+        this.neofuraService.invokeFunction(this.address());
+      }
+    });
+  }
+
   claimableGas = computed<string>(() => {
-    if (this.address !== null) {
-      this.neofuraService.invokeFunction(this.address());
+    if (this.address() !== null) {
       return (
         this.neofuraService
           .responseSignal()
