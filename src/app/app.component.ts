@@ -19,6 +19,7 @@ export class AppComponent {
     });
   }
 
+  isLoading = computed<boolean>(() => this.neofuraService.loadingSignal());
   claimableGas = computed<string>(() => this.neofuraService.responseSignal());
 
   maskedAddress = computed<string>(() => {

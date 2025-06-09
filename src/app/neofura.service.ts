@@ -47,6 +47,7 @@ export class NeofuraService {
       }
       this.loadingSignal.set(true);
       this.errorSignal.set(null);
+      this.responseSignal.set(null);
       this.http
         .post<any>(
           this.API_URL,
@@ -79,6 +80,7 @@ export class NeofuraService {
           error: (err) => {
             this.errorSignal.set(err);
             this.loadingSignal.set(false);
+            this.responseSignal.set(null);
           },
         });
     })();

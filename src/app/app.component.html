@@ -3,7 +3,11 @@
   <h2>Address</h2>
   <input [value]="maskedAddress()" (input)="updateAddress($event)" />
   <h2>Claimable Gas:</h2>
-  <p>{{ claimableGas() }}</p>
+  @if(isLoading()) {
+    <div class="spinner"></div>
+  } @else {
+    <p>{{ claimableGas() }}</p>
+  }
 </div>
 } @else {
 <div class="no-address">
