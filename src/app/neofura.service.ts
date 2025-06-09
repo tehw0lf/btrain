@@ -71,7 +71,9 @@ export class NeofuraService {
         )
         .subscribe({
           next: (data) => {
-            this.responseSignal.set(data);
+            this.responseSignal.set(
+              parseInt(data?.result?.stack[0]?.value) / 100000000
+            );
             this.loadingSignal.set(false);
           },
           error: (err) => {

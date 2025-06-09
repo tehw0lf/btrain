@@ -19,19 +19,7 @@ export class AppComponent {
     });
   }
 
-  claimableGas = computed<string>(() => {
-    return (
-      this.neofuraService
-        .responseSignal()
-        ?.result?.stack[0]?.value.padStart(9, '0')
-        .slice(0, 1) +
-        '.' +
-        this.neofuraService
-          .responseSignal()
-          ?.result?.stack[0]?.value.padStart(9, '0')
-          .slice(1) || 'error fetching claimable gas'
-    );
-  });
+  claimableGas = computed<string>(() => this.neofuraService.responseSignal());
 
   maskedAddress = computed<string>(() => {
     const addr = this.address();
