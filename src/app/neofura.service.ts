@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Buffer } from 'buffer';
 import { catchError, lastValueFrom, map, Observable, of } from 'rxjs';
 
@@ -13,12 +13,11 @@ export class NeofuraService {
   private readonly HEADERS = new HttpHeaders({
     'Content-Type': 'application/json',
   });
+  private readonly http: HttpClient = inject(HttpClient);
 
   responseSignal = signal<any | null>(null);
   loadingSignal = signal<boolean>(false);
   errorSignal = signal<any | null>(null);
-
-  constructor(private http: HttpClient) {}
 
   getClaimableGas(address: string | null): void {
     if (!address) {
