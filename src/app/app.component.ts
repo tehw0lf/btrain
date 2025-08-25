@@ -35,7 +35,15 @@ export class AppComponent {
     if (gas.bNEO > 0) parts.push(`bNEO: ${gas.bNEO.toFixed(8)}`);
     if (gas.NEO > 0) parts.push(`NEO: ${gas.NEO.toFixed(8)}`);
     
-    return parts.length > 0 ? parts.join(', ') : 'No claimable gas';
+    if (parts.length === 0) return 'No claimable gas';
+    
+    // Add total if both gas types are present
+    if (gas.bNEO > 0 && gas.NEO > 0) {
+      const total = gas.bNEO + gas.NEO;
+      parts.push(`Total: ${total.toFixed(8)}`);
+    }
+    
+    return parts.join(', ');
   });
 
   maskedAddress = computed<string>(() => {
