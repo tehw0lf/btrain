@@ -23,4 +23,4 @@ jobs:
       docker_meta: '[{"name":"btrain","file":"Dockerfile"}]'
       artifact_path: 'dist'
       publish_github_release: 'true'
-      release_pre: 'mv dist/btrain/browser . && rm -rf dist && mv browser dist'
+      release_pre: 'zip -j btrain.zip dist/btrain/browser/* && rm -rf dist/* && mv btrain.zip dist/'
