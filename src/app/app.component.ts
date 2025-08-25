@@ -14,13 +14,29 @@ export class AppComponent {
   constructor() {
     effect(() => {
       if (this.address()?.length === 34 || this.address()?.endsWith('.neo')) {
-        this.neofuraService.getClaimableGas(this.address());
+        this.neofuraService.getClaimableGasAndBneoGas(this.address());
       }
     });
   }
 
   isLoading = computed<boolean>(() => this.neofuraService.loadingSignal());
-  claimableGas = computed<string>(() => this.neofuraService.responseSignal());
+  claimableGas = computed<{bNEO: number, NEO: number} | null>(() => this.neofuraService.responseSignal());
+  
+  hasClaimableGas = computed<boolean>(() => {
+    const gas = this.claimableGas();
+    return gas ? (gas.bNEO > 0 || gas.NEO > 0) : false;
+  });
+  
+  displayableGas = computed<string>(() => {
+    const gas = this.claimableGas();
+    if (!gas) return 'No claimable gas';
+    
+    const parts: string[] = [];
+    if (gas.bNEO > 0) parts.push(`bNEO: ${gas.bNEO.toFixed(8)}`);
+    if (gas.NEO > 0) parts.push(`NEO: ${gas.NEO.toFixed(8)}`);
+    
+    return parts.length > 0 ? parts.join(', ') : 'No claimable gas';
+  });
 
   maskedAddress = computed<string>(() => {
     const addr = this.address();
