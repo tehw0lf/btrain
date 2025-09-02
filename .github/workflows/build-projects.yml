@@ -24,3 +24,4 @@ jobs:
       artifact_path: 'dist'
       publish_github_release: 'true'
       release_pre: 'zip -j btrain.zip dist/btrain/browser/* && rm -rf dist/* && mv btrain.zip dist/'
+      platforms: 'linux/arm64'
