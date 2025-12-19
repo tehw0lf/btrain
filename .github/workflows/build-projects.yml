@@ -11,18 +11,19 @@ jobs:
     name: external workflow
     uses: tehw0lf/workflows/.github/workflows/build-test-publish.yml@main
     permissions:
-      id-token: write    # REQUIRED - Always needed for OIDC (npm Trusted Publishing + future integrations)
+      id-token: write
       actions: write
       contents: write
       packages: write
+      security-events: write
     with:
-      tool: 'npm'
-      install: 'ci'
-      build_branch: 'run build'
-      build_main: 'run build'
+      tool: "npm"
+      install: "ci"
+      build_branch: "run build"
+      build_main: "run build"
       event_name: ${{ github.event_name }}
       docker_meta: '[{"name":"btrain","file":"Dockerfile"}]'
-      artifact_path: 'dist'
-      publish_github_release: 'true'
-      release_pre: 'zip -j btrain.zip dist/btrain/browser/* && rm -rf dist/* && mv btrain.zip dist/'
-      platforms: 'linux/arm64'
+      artifact_path: "dist"
+      publish_github_release: "true"
+      release_pre: "zip -j btrain.zip dist/btrain/browser/* && rm -rf dist/* && mv btrain.zip dist/"
+      platforms: "linux/arm64"
