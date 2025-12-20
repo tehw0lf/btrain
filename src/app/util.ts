@@ -12,7 +12,10 @@ const reverse = (src: Uint8Array): Uint8Array => {
 
 // SHA-256 hashing using Web Crypto API
 async function sha256(data: Uint8Array): Promise<Uint8Array> {
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashBuffer = await crypto.subtle.digest(
+    'SHA-256',
+    data as BufferSource
+  );
   return new Uint8Array(hashBuffer);
 }
 
