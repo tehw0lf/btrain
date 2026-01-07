@@ -58,6 +58,11 @@
     "typescript-eslint": "8.50.0",
     "jest-util": "30.0.5"
   },
+  "overrides": {
+    "@angular/cli": {
+      "@modelcontextprotocol/sdk": "1.25.2"
+    }
+  },
   "nx": {
     "includedScripts": []
   }
