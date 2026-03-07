@@ -22,7 +22,6 @@ jobs:
       install: "ci"
       build_branch: "run build"
       build_main: "run build"
-      event_name: ${{ github.event_name }}
       docker_meta: '[{"name":"btrain","file":"Dockerfile"}]'
       artifact_path: "dist"
       publish_github_release: "true"
