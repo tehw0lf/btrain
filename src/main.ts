@@ -6,3 +6,8 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, {...appConfig, providers: [provideZoneChangeDetection(), ...appConfig.providers]}).catch((err) =>
   console.error(err)
 );
+
+window.addEventListener('message', (e) => {
+  if (e.data?.type !== 'theme') return;
+  document.body.classList.toggle('dark', e.data.theme === 'dark');
+});
