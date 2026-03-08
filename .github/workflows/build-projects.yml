@@ -28,3 +28,4 @@ jobs:
       release_pre: "zip -j btrain.zip dist/btrain/browser/* && rm -rf dist/* && mv btrain.zip dist/"
       platforms: "linux/arm64"
       cyclonedx_ignore_npm_errors: true
+      npm_audit_omit_dev: true
