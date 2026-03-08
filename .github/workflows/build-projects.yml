@@ -22,11 +22,10 @@ jobs:
       install: "ci"
       build_branch: "run build"
       build_main: "run build"
-      event_name: ${{ github.event_name }}
       docker_meta: '[{"name":"btrain","file":"Dockerfile"}]'
       artifact_path: "dist"
       publish_github_release: "true"
-      overwrite_release: "true"
       release_pre: "zip -j btrain.zip dist/btrain/browser/* && rm -rf dist/* && mv btrain.zip dist/"
       platforms: "linux/arm64"
       cyclonedx_ignore_npm_errors: true
+      npm_audit_omit_dev: true

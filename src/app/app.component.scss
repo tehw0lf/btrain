@@ -29,6 +29,18 @@ body, :host {
   background: #fafbfc;
   color: #222;
   font-family: 'Inter', Arial, sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+:host-context(body.dark) {
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+:host-context(body.dark) input {
+  background: #161b22;
+  color: #e6edf3;
+  border-color: #30363d;
 }
 
 .address .spinner {
