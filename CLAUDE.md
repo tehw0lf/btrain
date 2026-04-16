@@ -16,7 +16,7 @@ btrain is a single-purpose Angular application that retrieves claimable $GAS amo
 
 ### Core Components
 - **AppComponent** (`src/app/app.component.ts`): Main component with address input and gas display
-- **NeofuraService** (`src/app/neofura.service.ts`): Service for Neo blockchain API interactions
+- **ApiService** (`src/app/api.service.ts`): Service for Neo blockchain API interactions
 - **Util functions** (`src/app/util.ts`): Address-to-scripthash conversion utilities
 
 ### Key Dependencies
@@ -77,7 +77,7 @@ nx test --configuration=ci
 ## Blockchain Integration
 
 ### Neo N3 API Integration
-- **Primary API**: Neofura (https://neofura.ngd.network/)
+- **Primary API**: COZ mainnet RPC (https://mainnet1.neo.coz.io:443)
 - **Contract Address**: `0x48c40d4666f93408be1bef038b6722404d9a4c2a` (bNEO contract)
 - **Neo NS Contract**: `0x50ac1c37690cc2cfc594472833cf57505d5f46de` (domain resolution)
 
