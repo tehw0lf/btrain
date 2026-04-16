@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 
-import { NeofuraService } from './neofura.service';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +8,19 @@ import { NeofuraService } from './neofura.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  neofuraService = inject(NeofuraService);
+  apiService = inject(ApiService);
   address = signal<string | null>(null);
 
   constructor() {
     effect(() => {
       if (this.address()?.length === 34 || this.address()?.endsWith('.neo')) {
-        this.neofuraService.getClaimableGasAndBneoGas(this.address());
+        this.apiService.getClaimableGasAndBneoGas(this.address());
       }
     });
   }
 
-  isLoading = computed<boolean>(() => this.neofuraService.loadingSignal());
-  claimableGas = computed<{bNEO: number, NEO: number} | null>(() => this.neofuraService.responseSignal());
+  isLoading = computed<boolean>(() => this.apiService.loadingSignal());
+  claimableGas = computed<{bNEO: number, NEO: number} | null>(() => this.apiService.responseSignal());
   
   hasClaimableGas = computed<boolean>(() => {
     const gas = this.claimableGas();

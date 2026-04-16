@@ -8,8 +8,8 @@ import { addressToScriptHash } from './util';
 @Injectable({
   providedIn: 'root',
 })
-export class NeofuraService {
-  private readonly API_URL = 'https://neofura.ngd.network/';
+export class ApiService {
+  private readonly API_URL = 'https://mainnet1.neo.coz.io:443';
   private readonly HEADERS = new HttpHeaders({
     'Content-Type': 'application/json',
   });
