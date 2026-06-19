@@ -105,5 +105,9 @@
       "typeSeparator": "."
     }
   },
-  "defaultProject": "btrain"
+  "defaultProject": "btrain",
+  "analytics": false,
+  "migrate": {
+    "agentic": true
+  }
 }
