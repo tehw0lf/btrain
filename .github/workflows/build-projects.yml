@@ -21,6 +21,8 @@ jobs:
     with:
       tool: "npm"
       install: "ci"
+      lint: "run lint"
+      test: "run test -- --configuration=ci"
       build_branch: "run build"
       build_main: "run build"
       docker_meta: '[{"name":"btrain","file":"Dockerfile"}]'
