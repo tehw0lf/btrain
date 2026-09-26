@@ -9,7 +9,7 @@ btrain is a single-purpose Angular application that retrieves claimable $GAS amo
 ## Architecture
 
 ### Single Angular Application (Nx-based)
-- **Framework**: Angular 20 with standalone components
+- **Framework**: Angular 22 with standalone components
 - **Build System**: Nx monorepo structure (single project)
 - **State Management**: Angular signals for reactive state
 - **HTTP Client**: Angular HttpClient for Neo blockchain API calls
