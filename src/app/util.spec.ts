@@ -15,7 +15,7 @@ const BURN_SCRIPT_HASH = '0x0000000000000000000000000000000000000000';
 describe('addressToScriptHash', () => {
   it('converts a valid address to its little-endian script hash', async () => {
     await expect(addressToScriptHash(BNEO_CONTRACT_ADDRESS)).resolves.toBe(
-      BNEO_CONTRACT_SCRIPT_HASH
+      BNEO_CONTRACT_SCRIPT_HASH,
     );
   });
 
@@ -23,15 +23,14 @@ describe('addressToScriptHash', () => {
     // Guards the little-endian conversion specifically: if `reverse` were
     // dropped, this would come back as the big-endian hash instead.
     const result = await addressToScriptHash(BNEO_CONTRACT_ADDRESS);
-    const bigEndian =
-      '0x2a4c9a4d402267' + '8b03ef1bbe0834f96646' + '0dc448';
+    const bigEndian = '0x2a4c9a4d402267' + '8b03ef1bbe0834f96646' + '0dc448';
     expect(result).not.toBe(bigEndian);
     expect(result).toBe(BNEO_CONTRACT_SCRIPT_HASH);
   });
 
   it('handles an all-zero script hash', async () => {
     await expect(addressToScriptHash(BURN_ADDRESS)).resolves.toBe(
-      BURN_SCRIPT_HASH
+      BURN_SCRIPT_HASH,
     );
   });
 
@@ -44,13 +43,13 @@ describe('addressToScriptHash', () => {
     // Last character altered: still valid base58, wrong checksum.
     const tampered = BNEO_CONTRACT_ADDRESS.slice(0, -1) + 'p';
     await expect(addressToScriptHash(tampered)).rejects.toThrow(
-      /Invalid checksum/
+      /Invalid checksum/,
     );
   });
 
   it('rejects a string too short to carry a checksum', async () => {
     await expect(addressToScriptHash('1')).rejects.toThrow(
-      'Invalid base58 string'
+      'Invalid base58 string',
     );
   });
 

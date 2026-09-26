@@ -1,23 +1,23 @@
 <main>
-@if(address()?.length === 34 || address()?.endsWith('.neo')) {
-<div class="address">
-  <h2>Address</h2>
-  <input [value]="maskedAddress()" (input)="updateAddress($event)" />
-  <h2>Claimable Gas:</h2>
-  @if(isLoading()) {
-    <div class="spinner"></div>
+  @if (address()?.length === 34 || address()?.endsWith('.neo')) {
+    <div class="address">
+      <h2>Address</h2>
+      <input [value]="maskedAddress()" (input)="updateAddress($event)" />
+      <h2>Claimable Gas:</h2>
+      @if (isLoading()) {
+        <div class="spinner"></div>
+      } @else {
+        <p>{{ displayableGas() }}</p>
+      }
+    </div>
   } @else {
-    <p>{{ displayableGas() }}</p>
+    <div class="no-address">
+      <input
+        class="initial"
+        [value]="maskedAddress()"
+        (input)="updateAddress($event)"
+        placeholder="Enter an N3 address"
+      />
+    </div>
   }
-</div>
-} @else {
-<div class="no-address">
-  <input
-    class="initial" 
-    [value]="maskedAddress()"
-    (input)="updateAddress($event)"
-    placeholder="Enter an N3 address"
-  />
-</div>
-}
 </main>

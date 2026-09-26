@@ -31,10 +31,10 @@ export class ApiService {
       } catch (err) {
         try {
           const resolvedAddress = await lastValueFrom(
-            this.resolveNeoNS(address)
+            this.resolveNeoNS(address),
           );
           scriptHash = await addressToScriptHash(
-            Buffer.from(resolvedAddress, 'base64').toString('utf-8')
+            Buffer.from(resolvedAddress, 'base64').toString('utf-8'),
           );
         } catch (err2) {
           console.error(err2);
@@ -68,7 +68,7 @@ export class ApiService {
         },
         {
           headers: this.HEADERS,
-        }
+        },
       );
 
       const neoRequest$ = this.http.post<any>(
@@ -81,7 +81,7 @@ export class ApiService {
         },
         {
           headers: this.HEADERS,
-        }
+        },
       );
 
       forkJoin({
@@ -136,7 +136,7 @@ export class ApiService {
         },
         {
           headers: this.HEADERS,
-        }
+        },
       )
       .pipe(
         catchError((err) => {
@@ -144,7 +144,7 @@ export class ApiService {
           this.loadingSignal.set(false);
           return of();
         }),
-        map((data: any) => data.result?.stack[0]?.value || null)
+        map((data: any) => data.result?.stack[0]?.value || null),
       );
   }
 }

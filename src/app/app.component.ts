@@ -1,4 +1,11 @@
-import { Component, computed, effect, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 import { ApiService } from './api.service';
 
@@ -21,29 +28,31 @@ export class AppComponent {
   }
 
   isLoading = computed<boolean>(() => this.apiService.loadingSignal());
-  claimableGas = computed<{bNEO: number, NEO: number} | null>(() => this.apiService.responseSignal());
-  
+  claimableGas = computed<{ bNEO: number; NEO: number } | null>(() =>
+    this.apiService.responseSignal(),
+  );
+
   hasClaimableGas = computed<boolean>(() => {
     const gas = this.claimableGas();
-    return gas ? (gas.bNEO > 0 || gas.NEO > 0) : false;
+    return gas ? gas.bNEO > 0 || gas.NEO > 0 : false;
   });
-  
+
   displayableGas = computed<string>(() => {
     const gas = this.claimableGas();
     if (!gas) return 'No claimable gas';
-    
+
     const parts: string[] = [];
     if (gas.bNEO > 0) parts.push(`bNEO: ${gas.bNEO.toFixed(8)}`);
     if (gas.NEO > 0) parts.push(`NEO: ${gas.NEO.toFixed(8)}`);
-    
+
     if (parts.length === 0) return 'No claimable gas';
-    
+
     // Add total if both gas types are present
     if (gas.bNEO > 0 && gas.NEO > 0) {
       const total = gas.bNEO + gas.NEO;
       parts.push(`Total: ${total.toFixed(8)}`);
     }
-    
+
     return parts.join(', ');
   });
 
