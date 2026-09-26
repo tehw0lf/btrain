@@ -52,7 +52,7 @@ describe('AppComponent', () => {
       const c = createComponent();
       api.responseSignal.set({ bNEO: 1.5, NEO: 2.25 });
       expect(c.displayableGas()).toBe(
-        'bNEO: 1.50000000, NEO: 2.25000000, Total: 3.75000000'
+        'bNEO: 1.50000000, NEO: 2.25000000, Total: 3.75000000',
       );
     });
 

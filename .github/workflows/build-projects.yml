@@ -19,16 +19,16 @@ jobs:
       security-events: write
       pull-requests: write
     with:
-      tool: "npm"
-      install: "ci"
-      lint: "run lint"
-      test: "run test -- --configuration=ci"
-      build_branch: "run build"
-      build_main: "run build"
+      tool: 'npm'
+      install: 'ci'
+      lint: 'run lint'
+      test: 'run test -- --configuration=ci'
+      build_branch: 'run build'
+      build_main: 'run build'
       docker_meta: '[{"name":"btrain","file":"Dockerfile"}]'
-      artifact_path: "dist"
+      artifact_path: 'dist'
       publish_github_release: true
-      release_pre: "zip -j btrain.zip dist/btrain/browser/* && rm -rf dist/* && mv btrain.zip dist/"
-      platforms: "linux/arm64"
+      release_pre: 'zip -j btrain.zip dist/btrain/browser/* && rm -rf dist/* && mv btrain.zip dist/'
+      platforms: 'linux/arm64'
       cyclonedx_ignore_npm_errors: true
       npm_audit_omit_dev: true

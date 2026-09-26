@@ -1,4 +1,5 @@
-.address, .no-address {
+.address,
+.no-address {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,16 +21,20 @@ input {
   max-width: 165px;
 }
 
-h2, p {
+h2,
+p {
   margin: 0.5rem 0;
   font-weight: 400;
 }
 
-body, :host {
+body,
+:host {
   background: #fafbfc;
   color: #222;
   font-family: 'Inter', Arial, sans-serif;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 :host-context(body.dark) {
@@ -54,6 +59,10 @@ body, :host {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

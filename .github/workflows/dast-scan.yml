@@ -2,7 +2,7 @@ name: weekly dast scan
 
 on:
   schedule:
-    - cron: "0 3 * * 1"
+    - cron: '0 3 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -14,6 +14,6 @@ jobs:
       issues: write
       security-events: write
     with:
-      target_url: "https://btrain.tehwolf.de"
-      scan_type: "baseline"
-      rules_file: ".zap/rules.tsv"
+      target_url: 'https://btrain.tehwolf.de'
+      scan_type: 'baseline'
+      rules_file: '.zap/rules.tsv'
