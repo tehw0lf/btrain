@@ -1,6 +1,7 @@
 {
   "name": "btrain",
   "$schema": "node_modules/nx/schemas/project-schema.json",
+  "includedScripts": [],
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "./src",
@@ -52,6 +53,9 @@
       "continuous": true,
       "executor": "@angular/build:dev-server",
       "defaultConfiguration": "development",
+      "readyWhen": {
+        "signal": true
+      },
       "configurations": {
         "production": {
           "buildTarget": "btrain:build:production"
@@ -111,7 +115,11 @@
         "buildTarget": "btrain:build",
         "staticFilePath": "dist/btrain/browser",
         "spa": true
-      }
+      },
+      "readyWhen": {
+        "signal": true
+      },
+      "dependsOn": ["build"]
     }
   }
 }
