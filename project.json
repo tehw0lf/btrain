@@ -118,8 +118,7 @@
       },
       "readyWhen": {
         "signal": true
-      },
-      "dependsOn": ["build"]
+      }
     }
   }
 }
